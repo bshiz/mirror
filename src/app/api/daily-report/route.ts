@@ -6,14 +6,24 @@ import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { analyzeDailyReport } from '@/lib/analyze'
 
 export async function POST(request: NextRequest) {
-  // Authenticate the user
-  const supabaseAuth = await createClient()
-  const { data: { user } } = await supabaseAuth.auth.getUser()
-  if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
-
   const body = await request.json()
+
+  // Allow cron job to bypass session auth using CRON_SECRET + userId in body
+  const authHeader = request.headers.get('authorization')
+  const isCron = authHeader === `Bearer ${process.env.CRON_SECRET}` && !!body.userId
+
+  let userId: string
+
+  if (isCron) {
+    userId = body.userId
+  } else {
+    const supabaseAuth = await createClient()
+    const { data: { user } } = await supabaseAuth.auth.getUser()
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+    userId = user.id
+  }
 
   // Default to today if no date provided
   const date: string = body.date ?? new Date().toISOString().slice(0, 10)
@@ -27,7 +37,7 @@ export async function POST(request: NextRequest) {
   const { data: meetings, error: meetingsError } = await supabase
     .from('meetings')
     .select('id, title, transcript, occurred_at, reports(*)')
-    .eq('user_id', user.id)
+    .eq('user_id', userId)
     .eq('status', 'ready')
     .gte('occurred_at', dayStart)
     .lte('occurred_at', dayEnd)
@@ -44,7 +54,7 @@ export async function POST(request: NextRequest) {
   const { data: profile } = await supabase
     .from('profiles')
     .select('*')
-    .eq('id', user.id)
+    .eq('id', userId)
     .single()
 
   if (!profile) {
@@ -58,7 +68,7 @@ export async function POST(request: NextRequest) {
     const { data: dailyReport, error: insertError } = await supabase
       .from('daily_reports')
       .insert({
-        user_id: user.id,
+        user_id: userId,
         report_date: date,
         overall_score: result.overallScore,
         summary: result.summary,
@@ -67,7 +77,7 @@ export async function POST(request: NextRequest) {
         pillars: result.pillars,
         actions: result.actions,
         coach_opener: result.coachOpener,
-        raw_meetings: meetings.map(m => ({ id: m.id, title: m.title })),
+        raw_meetings: meetings.map((m: { id: string; title: string }) => ({ id: m.id, title: m.title })),
       })
       .select()
       .single()

@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import type { Profile } from '@/types'
 
@@ -95,12 +96,19 @@ export default function FeedPage() {
       <div style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(255, 255, 255, 0.85)', backdropFilter: 'blur(12px)', borderBottom: '1px solid #ebebeb', padding: '0 40px', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/mirror_logo.png" alt="Mirror" style={{ height: 28, width: 'auto', display: 'block' }} />
-        <button
-          onClick={() => router.push('/profile')}
-          style={{ width: 34, height: 34, borderRadius: '50%', background: '#0f0e0c', color: '#ffffff', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Mono', monospace", fontSize: 14, fontWeight: 500, flexShrink: 0 }}
-        >
-          {profile ? initials(profile.name) : '?'}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Link href="/new" style={{ textDecoration: 'none' }}>
+            <button style={{ border: '1px solid #e0e0e0', borderRadius: 6, padding: '6px 14px', fontSize: 13, fontWeight: 500, color: '#1a1a1a', background: 'white', cursor: 'pointer', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              + Add meeting
+            </button>
+          </Link>
+          <button
+            onClick={() => router.push('/profile')}
+            style={{ width: 34, height: 34, borderRadius: '50%', background: '#0f0e0c', color: '#ffffff', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Mono', monospace", fontSize: 14, fontWeight: 500, flexShrink: 0 }}
+          >
+            {profile ? initials(profile.name) : '?'}
+          </button>
+        </div>
       </div>
 
       <div style={{ maxWidth: 680, margin: '0 auto', padding: '44px 40px 80px', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
