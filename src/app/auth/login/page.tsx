@@ -26,12 +26,12 @@ async function handleLogin(e: React.FormEvent) {
 }
 
   return (
-    <div style={{ maxWidth: 420, margin: '120px auto', padding: '0 24px', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontFamily: "Georgia, serif", fontSize: 36, marginBottom: 8 }}>
-        Mirror<span style={{ color: '#4a6fa5' }}>.</span>
-      </h1>
-      <p style={{ color: '#7a7770', marginBottom: 40, fontSize: 16 }}>
-        The feedback your manager isn't giving you.
+    <div style={{ minHeight: '100vh', background: '#FBFBFB', display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+    <div style={{ maxWidth: 420, width: '100%', margin: '120px 24px 0', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/mirror_logo.png" alt="Mirror" style={{ width: 160, height: 'auto', display: 'block', marginBottom: 16 }} />
+      <p style={{ color: '#6b7280', marginBottom: 40, fontSize: 16, lineHeight: 1.6, margin: '0 0 40px' }}>
+        Honest feedback on every meeting, delivered automatically. See exactly how you show up at work.
       </p>
       {sent ? (
         <div style={{ background: '#e3f0ec', border: '1px solid #1a6b5a', borderRadius: 8, padding: '16px 20px' }}>
@@ -47,7 +47,7 @@ async function handleLogin(e: React.FormEvent) {
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
-            style={{ padding: '10px 14px', borderRadius: 4, border: '1px solid #e0e0e0', fontSize: 16, outline: 'none' }}
+            style={{ padding: '10px 14px', borderRadius: 4, border: '1px solid #ebebeb', fontSize: 16, outline: 'none' }}
           />
           <button
             type="submit"
@@ -58,6 +58,7 @@ async function handleLogin(e: React.FormEvent) {
           </button>
         </form>
       )}
+    </div>
     </div>
   )
 }

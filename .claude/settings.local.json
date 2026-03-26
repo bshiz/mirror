@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(__NEW_LINE_e82785519d567967__ BASE=\"/Users/brandonhoulihan/Desktop/Mirror\")",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i '' 's/#c8472a/#E32E2E/g' \"$f\")",
+      "Bash(sed -i '' 's/#C8472A/#E32E2E/g' \"$f\")"
     ]
   }
 }

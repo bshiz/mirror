@@ -64,32 +64,32 @@ export default function NewMeetingPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f2f2f2', fontFamily: 'system-ui, sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: '#ffffff', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
       <div style={{ maxWidth: 680, margin: '0 auto', padding: '44px 40px 80px' }}>
 
         <button
           onClick={() => router.push('/feed')}
-          style={{ background: 'none', border: 'none', color: '#7a7770', fontSize: 16, cursor: 'pointer', padding: 0, marginBottom: 36, display: 'flex', alignItems: 'center', gap: 6 }}
+          style={{ background: 'none', border: 'none', color: '#6b7280', fontSize: 16, cursor: 'pointer', padding: 0, marginBottom: 36, display: 'flex', alignItems: 'center', gap: 6 }}
         >
           ← Back to feed
         </button>
 
-        <h2 style={{ fontFamily: "Georgia, serif", fontSize: 32, letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: 8, color: '#0f0e0c' }}>
+        <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 32, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: 8, color: '#0f0e0c' }}>
           Paste a transcript
         </h2>
-        <p style={{ fontSize: 16, color: '#7a7770', marginBottom: 32, lineHeight: 1.6 }}>
+        <p style={{ fontSize: 16, color: '#6b7280', marginBottom: 32, lineHeight: 1.6 }}>
           Paste any meeting transcript below and we'll analyze your communication for you.
         </p>
 
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7a7770', margin: 0 }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#6b7280', margin: 0 }}>
               Transcript
             </p>
             <button
               type="button"
               onClick={() => setTranscript(SAMPLE_TRANSCRIPT)}
-              style={{ background: 'none', border: 'none', fontFamily: "'DM Mono', monospace", fontSize: 14, letterSpacing: '0.05em', color: '#7a7770', cursor: 'pointer', padding: 0, textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: 3 }}
+              style={{ background: 'none', border: 'none', fontFamily: "'DM Mono', monospace", fontSize: 14, letterSpacing: '0.05em', color: '#6b7280', cursor: 'pointer', padding: 0, textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: 3 }}
             >
               Load sample transcript
             </button>
@@ -103,12 +103,12 @@ export default function NewMeetingPage() {
             style={{
               width: '100%',
               padding: '16px',
-              fontFamily: "Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: 16,
               lineHeight: 1.7,
-              color: '#3a3834',
+              color: '#1a1a1a',
               background: 'white',
-              border: '1px solid #e0e0e0',
+              border: '1px solid #ebebeb',
               borderRadius: 8,
               resize: 'vertical',
               outline: 'none',
@@ -117,11 +117,11 @@ export default function NewMeetingPage() {
           />
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8, marginBottom: 20 }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, color: charCount > 0 ? '#7a7770' : '#c0bbb4', margin: 0, letterSpacing: '0.05em' }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, color: charCount > 0 ? '#6b7280' : '#c0bbb4', margin: 0, letterSpacing: '0.05em' }}>
               {charCount.toLocaleString()} characters
             </p>
             {error && (
-              <p style={{ fontSize: 12, color: '#4a6fa5', margin: 0 }}>{error}</p>
+              <p style={{ fontSize: 12, color: '#357FEC', margin: 0 }}>{error}</p>
             )}
           </div>
 
@@ -130,11 +130,11 @@ export default function NewMeetingPage() {
             disabled={isDisabled}
             style={{
               padding: '12px 28px',
-              background: isDisabled ? '#e0e0e0' : '#0f0e0c',
-              color: isDisabled ? '#7a7770' : '#f2f2f2',
+              background: isDisabled ? '#ebebeb' : '#0f0e0c',
+              color: isDisabled ? '#6b7280' : '#ffffff',
               border: 'none',
               borderRadius: 4,
-              fontFamily: 'system-ui, sans-serif',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: 16,
               fontWeight: 500,
               cursor: isDisabled ? 'default' : 'pointer',

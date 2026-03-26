@@ -98,20 +98,20 @@ export default function CoachChat({ meetingId, reportId, openerMessage, userName
   }
 
   const s = {
-    section: { background: 'white', border: '1px solid #e0e0e0', borderRadius: 10, overflow: 'hidden' } as React.CSSProperties,
-    header: { padding: '16px 20px', borderBottom: '1px solid #e8e8e8', display: 'flex', alignItems: 'center', gap: 10 } as React.CSSProperties,
-    avatar: { width: 30, height: 30, background: '#0f0e0c', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "Georgia, serif", fontStyle: 'italic', fontSize: 16, color: '#f2f2f2', flexShrink: 0 } as React.CSSProperties,
+    section: { background: 'white', border: '1px solid #ebebeb', borderRadius: 10, overflow: 'hidden' } as React.CSSProperties,
+    header: { padding: '16px 20px', borderBottom: '1px solid #ebebeb', display: 'flex', alignItems: 'center', gap: 10 } as React.CSSProperties,
+    avatar: { width: 30, height: 30, background: '#0f0e0c', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Plus Jakarta Sans', sans-serif", fontStyle: 'italic', fontSize: 16, color: '#ffffff', flexShrink: 0 } as React.CSSProperties,
     messages: { padding: '18px 20px', maxHeight: 340, overflowY: 'auto' as const, display: 'flex', flexDirection: 'column' as const, gap: 14 },
     msgCoach: { display: 'flex', gap: 8, maxWidth: '88%' } as React.CSSProperties,
     msgUser: { display: 'flex', gap: 8, maxWidth: '88%', alignSelf: 'flex-end', flexDirection: 'row-reverse' as const } as React.CSSProperties,
-    bubbleCoach: { padding: '10px 14px', borderRadius: 10, fontSize: 16, lineHeight: 1.6, background: '#f2f2f2', color: '#0f0e0c' } as React.CSSProperties,
-    bubbleUser: { padding: '10px 14px', borderRadius: 10, fontSize: 16, lineHeight: 1.6, background: '#0f0e0c', color: '#f2f2f2' } as React.CSSProperties,
+    bubbleCoach: { padding: '10px 14px', borderRadius: 10, fontSize: 16, lineHeight: 1.6, background: '#ffffff', color: '#0f0e0c' } as React.CSSProperties,
+    bubbleUser: { padding: '10px 14px', borderRadius: 10, fontSize: 16, lineHeight: 1.6, background: '#0f0e0c', color: '#ffffff' } as React.CSSProperties,
     msgAvatar: { width: 26, height: 26, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 500, marginTop: 2 } as React.CSSProperties,
     suggestions: { display: 'flex', flexWrap: 'wrap' as const, gap: 6, padding: '0 20px 14px' },
-    chip: { padding: '6px 12px', background: '#f2f2f2', border: '1px solid #e0e0e0', borderRadius: 20, fontSize: 12, color: '#3a3834', cursor: 'pointer' } as React.CSSProperties,
-    inputRow: { display: 'flex', gap: 8, padding: '14px 20px', borderTop: '1px solid #e8e8e8' } as React.CSSProperties,
-    input: { flex: 1, padding: '9px 14px', background: '#f2f2f2', border: '1px solid #e0e0e0', borderRadius: 10, fontFamily: 'system-ui, sans-serif', fontSize: 16, color: '#0f0e0c', outline: 'none' } as React.CSSProperties,
-    sendBtn: { padding: '9px 16px', background: '#4a6fa5', color: 'white', border: 'none', borderRadius: 10, fontSize: 16, fontWeight: 500, cursor: 'pointer' } as React.CSSProperties,
+    chip: { padding: '6px 12px', background: '#ffffff', border: '1px solid #ebebeb', borderRadius: 20, fontSize: 12, color: '#1a1a1a', cursor: 'pointer' } as React.CSSProperties,
+    inputRow: { display: 'flex', gap: 8, padding: '14px 20px', borderTop: '1px solid #ebebeb' } as React.CSSProperties,
+    input: { flex: 1, padding: '9px 14px', background: '#ffffff', border: '1px solid #ebebeb', borderRadius: 10, fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, color: '#0f0e0c', outline: 'none' } as React.CSSProperties,
+    sendBtn: { padding: '9px 16px', background: '#357FEC', color: 'white', border: 'none', borderRadius: 10, fontSize: 16, fontWeight: 500, cursor: 'pointer' } as React.CSSProperties,
   }
 
   // Show suggestions only if conversation is just the opener
@@ -123,7 +123,7 @@ export default function CoachChat({ meetingId, reportId, openerMessage, userName
         <div style={s.avatar}>M</div>
         <div>
           <div style={{ fontWeight: 500, fontSize: 16 }}>Mirror Coach</div>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, color: '#4a6fa5' }}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, color: '#357FEC' }}>
             {streaming ? '● Typing...' : '● Ready to dig in'}
           </div>
         </div>
@@ -134,8 +134,8 @@ export default function CoachChat({ meetingId, reportId, openerMessage, userName
           <div key={i} style={msg.role === 'user' ? s.msgUser : s.msgCoach}>
             <div style={{
               ...s.msgAvatar,
-              background: msg.role === 'assistant' ? '#0f0e0c' : '#e8e8e8',
-              color: msg.role === 'assistant' ? '#f2f2f2' : '#7a7770',
+              background: msg.role === 'assistant' ? '#0f0e0c' : '#ebebeb',
+              color: msg.role === 'assistant' ? '#ffffff' : '#6b7280',
             }}>
               {msg.role === 'assistant' ? 'M' : initials(userName)}
             </div>
@@ -148,12 +148,12 @@ export default function CoachChat({ meetingId, reportId, openerMessage, userName
         {/* Streaming bubble */}
         {streaming && (
           <div style={s.msgCoach}>
-            <div style={{ ...s.msgAvatar, background: '#0f0e0c', color: '#f2f2f2' }}>M</div>
+            <div style={{ ...s.msgAvatar, background: '#0f0e0c', color: '#ffffff' }}>M</div>
             <div style={s.bubbleCoach}>
               {streamingContent || (
                 <span style={{ display: 'flex', gap: 3, alignItems: 'center', padding: '2px 0' }}>
                   {[0, 1, 2].map(i => (
-                    <span key={i} style={{ width: 4, height: 4, background: '#7a7770', borderRadius: '50%', animation: `dot 1.2s ease-in-out ${i * 0.2}s infinite` }} />
+                    <span key={i} style={{ width: 4, height: 4, background: '#6b7280', borderRadius: '50%', animation: `dot 1.2s ease-in-out ${i * 0.2}s infinite` }} />
                   ))}
                 </span>
               )}
@@ -167,7 +167,7 @@ export default function CoachChat({ meetingId, reportId, openerMessage, userName
       {showSuggestions && (
         <div style={s.suggestions}>
           {SUGGESTIONS.map(s => (
-            <div key={s} style={{ padding: '6px 12px', background: '#f2f2f2', border: '1px solid #e0e0e0', borderRadius: 20, fontSize: 12, color: '#3a3834', cursor: 'pointer' }}
+            <div key={s} style={{ padding: '6px 12px', background: '#ffffff', border: '1px solid #ebebeb', borderRadius: 20, fontSize: 12, color: '#1a1a1a', cursor: 'pointer' }}
               onClick={() => send(s)}>
               {s}
             </div>
