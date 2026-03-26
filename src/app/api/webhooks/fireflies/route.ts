@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Transcript too short' }, { status: 400 })
     }
 
-    const supabase = createServiceClient()
+    const supabase = await createServiceClient()
 
     // 2. Find which Mirror user this Fireflies account belongs to
     // We match via the connections table where provider = 'fireflies'
